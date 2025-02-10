@@ -1,18 +1,30 @@
 <div class="container">
   <img [src]="food.imageUrl" [alt]="food.name">
   <div class="details">
-    <div  class ="header">
+    <div class="header">
       <span class="name">
-        {{food.name}}</span>
-      <span class="favorite{{food.favorite ? '':'not'}}">
+        {{ food.name }}
+      </span>
+      <span [class.favorite]="food.favorite" [class.not]="!food.favorite">
         🌟
       </span>
-
     </div>
+
     <div class="origins">
       <span *ngFor="let origin of food.origins">
-        {{origin}}
+        {{ origin }}
       </span>
     </div>
+
+    <div class="tags">
+      <span *ngFor="let tag of food.tags" class="tag">{{ tag }}</span>
     </div>
+
+    <div class="cook-time">
+      <span>
+        Time to cook about <strong>{{ food.cookTime }}</strong> minutes
+      </span>
+    </div>
+    <button>Add To Cart</button>
   </div>
+</div>

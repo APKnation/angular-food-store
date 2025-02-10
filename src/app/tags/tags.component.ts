@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FoodService } from '../services/food/food.service';
 import { Tag } from '../shared/Tag'; // Ensure this path is correct
 import { RouterModule } from '@angular/router'; // Import RouterModule here
@@ -13,12 +13,19 @@ import { RouterModule } from '@angular/router'; // Import RouterModule here
   styleUrls: ['./tags.component.css']  // Fixed property name
 })
 export class TagsComponent implements OnInit {
-  tags: Tag[] = [];
+  @Input() foodpagetags:any[]=[];
+  foodPageTags?:string[];
+  
+  tags?: Tag[];
 
   constructor(private readonly foodServices: FoodService) { }
 
   ngOnInit(): void {
+    if (!this.foodPageTags) {
+      // Ensure getAllTags() returns an array of Tag objects
+      this.tags = this.foodServices.getAllTags();
+    }
     // Ensure getAllTags() returns an array of Tag objects
-    this.tags = this.foodServices.getAllTags();
+    //this.tags = this.foodServices.getAllTags();
   }
 }

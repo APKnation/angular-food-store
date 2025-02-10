@@ -8,13 +8,14 @@ import { SearchComponent } from './search/search.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { TagsComponent } from './tags/tags.component';
-import { CommonModule } from '@angular/common';
+import { CommonModule} from '@angular/common';
 import { FoodPageComponent } from './food-page/food-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
+    
     HomeComponent,
     SearchComponent,
   ],
@@ -32,6 +33,7 @@ import { FoodPageComponent } from './food-page/food-page.component';
 
   ],
   providers: [],
+  exports: [RouterModule, TagsComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
